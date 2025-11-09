@@ -1,21 +1,16 @@
-import { NextConfig } from "next";
+import type { NextConfig } from "next";
 
-type NextConfigWithExperimental = NextConfig & {
-  experimental?: {
-    appDir?: boolean;
-    [key: string]: any;
-  };
-};
+// Extend the NextConfig type to allow the redirects() function
+interface NextConfigWithRedirect extends NextConfig {
+  redirects?: () => Promise<
+    { source: string; destination: string; permanent: boolean }[]
+  >;
+}
 
-const nextConfig: NextConfigWithExperimental = {
+const nextConfig: NextConfigWithRedirect = {
   reactStrictMode: true,
 
-  // Allow App Router explicitly
-  experimental: {
-    appDir: true,
-  },
-
-  // Server-side redirect so root "/" goes to "/dashboard"
+  // Root redirect for Vercel (so "/" -> "/dashboard")
   async redirects() {
     return [
       {
