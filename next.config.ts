@@ -1,7 +1,30 @@
-import type { NextConfig } from "next";
+import { NextConfig } from "next";
 
-const nextConfig: NextConfig = {
-  /* config options here */
+type NextConfigWithExperimental = NextConfig & {
+  experimental?: {
+    appDir?: boolean;
+    [key: string]: any;
+  };
+};
+
+const nextConfig: NextConfigWithExperimental = {
+  reactStrictMode: true,
+
+  // Allow App Router explicitly
+  experimental: {
+    appDir: true,
+  },
+
+  // Server-side redirect so root "/" goes to "/dashboard"
+  async redirects() {
+    return [
+      {
+        source: "/",
+        destination: "/dashboard",
+        permanent: false,
+      },
+    ];
+  },
 };
 
 export default nextConfig;
