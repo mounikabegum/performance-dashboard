@@ -5,6 +5,12 @@ README — Real-Time Visualization Dashboard
 A high-performance, real-time data visualization dashboard built with Next.js (App Router) + TypeScript.
 It can smoothly render and update 10,000+ data points at 60 FPS using a Canvas + SVG hybrid renderer with Web Workers (OffscreenCanvas) for background drawing.
 
+🌐 Live Demo
+
+🔗 https://performance-dashboard-jade-three.vercel.app
+
+Hosted on Vercel — optimized production build running with Next.js 16.
+
 🚀 Features
 - Multiple Chart Types: Line, Bar, Scatter, Heatmap (custom-built, no chart libraries)
 - Real-Time Data Streaming: Simulated new data every 100 ms
@@ -75,6 +81,13 @@ performance-dashboard/
 - Low FPS → Reduce points or enable aggregation
 - Memory leak → Verify sliding window cleanup in DataProvider
 - Build errors → Ensure Node ≥ 18, Next ≥ 14
+
+📸 Screenshots / Recordings
+
+Dashboard View: public\Screenshots\Dashboard.png
+Datatable View: public\Screenshots\Datatable.png
+
+Stress-Test Demo: public\Screenshots\stress-test.mp4
 
 📄 License
 MIT — Educational and demonstration use only.
